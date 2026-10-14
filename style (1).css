@@ -192,6 +192,46 @@ a:hover {
   color: var(--color-ink);
 }
 
+.entry img { cursor: zoom-in; }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.88);
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+    .lightbox-caption {
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 22px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
 .entry-date {
   padding: 0.2rem var(--space-sm) var(--space-sm);
   font-size: 0.85rem;

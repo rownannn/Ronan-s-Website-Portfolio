@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style (1).css" />
+
+  
 </head>
 
 <body>
@@ -45,16 +47,9 @@
     </div>
   </header>
 
-  <!-- ==========================================================
-       PROFILE SECTION — your photo + a short intro about yourself
-       ========================================================== -->
+  
   <section class="profile-section" id="top">
-    <!-- 
-      PHOTO SLOT: put your photo file inside the /images folder,
-      then change "images/profile.jpg" below to match its filename.
-      A square photo (e.g. 500x500px) looks best since it gets
-      cropped into a circle.
-    -->
+   
     <img src="images/profile.jpg" alt="Photo of Juan Dela Cruz" class="profile-photo" />
 
     <div class="profile-text">
@@ -68,12 +63,6 @@
     
   </section>
   <hr>
-  <!-- ==========================================================
-       QUIZZES SECTION — this is what you'll edit most often.
-       Each ".entry" block below is ONE quiz. To add a new quiz,
-       copy one whole <div class="entry">...</div> block, paste
-       it right below the last one, and edit the text inside.
-       ========================================================== -->
   <div class="section-title" id="Quizzes">
     <h2>Quizzes</h2>
   </div>
@@ -88,21 +77,21 @@
   </div>
 
   <div class="entry">
-    <img src="images/unavailable.png" alt="Quiz 2" />
+    <img src="images/quiz2.png" alt="Quiz 2" />
     <h3>Quiz 2</h3>
-    <p class="entry-date">September 5, 2026</p>
+    <p class="entry-date">October 14, 2026</p>
   </div>
 
   <div class="entry">
-    <img src="images/unavailable.png" alt="Quiz 3" />
+    <img src="images/quiz3.png" alt="Quiz 3" />
     <h3>Quiz 3</h3>
-    <p class="entry-date">September 5, 2026</p>
+    <p class="entry-date">October 14, 2026</p>
   </div>
 
   <div class="entry">
-    <img src="images/unavailable.png" alt="Quiz 4" />
-    <h3>Quiz 4</h3>
-    <p class="entry-date">September 5, 2026</p>
+    <img src="images/longquiz.png" alt="Quiz 4" />
+    <h3>Long Quiz</h3>
+    <p class="entry-date">October 14, 2026</p>
   </div>
   
 
@@ -166,6 +155,43 @@
   <footer class="site-footer">
     &copy; Ronan A. Toribio. Built with HTML &amp; CSS.
   </footer>
+
+  <!-- Lightbox: shows the clicked image full-size -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="" id="lightbox-img" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <script>
+    (function () {
+      var box = document.getElementById("lightbox");
+      var big = document.getElementById("lightbox-img");
+      var cap = document.getElementById("lightbox-caption");
+
+      function open(img) {
+        big.src = img.src;
+        big.alt = img.alt;
+        cap.textContent = img.alt;
+        box.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function close() {
+        box.classList.remove("open");
+        big.src = "";
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".entry img").forEach(function (img) {
+        img.addEventListener("click", function () { open(img); });
+      });
+
+      box.addEventListener("click", close);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+    })();
+  </script>
 
 </body>
 </html>
